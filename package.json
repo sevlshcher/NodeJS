@@ -1,0 +1,25 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Here you can get acquainted with my projects which I did while studying Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sevlshcher/NodeJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sevlshcher/NodeJS/issues"
+  },
+  "homepage": "https://github.com/sevlshcher/NodeJS#readme",
+  "dependencies": {
+    "eslint-config-standard": "^14.1.0"
+  },
+  "devDependencies": {
+    "prettier-eslint": "^9.0.0"
+  }
+}
