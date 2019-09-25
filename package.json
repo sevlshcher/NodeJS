@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/sevlshcher/NodeJS#readme",
   "dependencies": {
-    "eslint-config-standard": "^14.1.0"
+    "eslint-config-standard": "^14.1.0",
+    "yargs": "^14.0.0"
   },
   "devDependencies": {
     "prettier-eslint": "^9.0.0"
