@@ -18,6 +18,7 @@
   "homepage": "https://github.com/sevlshcher/NodeJS#readme",
   "dependencies": {
     "eslint-config-standard": "^14.1.0",
+    "rimraf": "^3.0.0",
     "yargs": "^14.0.0"
   },
   "devDependencies": {

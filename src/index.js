@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const argv = require('yargs').argv
-const readLine = require('readline')
+const rimraf = require('rimraf')
 
 const newFile = __dirname + `/${argv.dir}`
 
@@ -12,21 +12,19 @@ const readDir = (base) => {
     let localBase = path.join(base, item)
     let state = fs.statSync(localBase)
     if (state.isFile()) {
-      if(argv._[0] === 'copy') {
-        let firstLet = item[0]
-        fs.mkdirSync(path.join(newFile, firstLet), { recursive: true })
-        copyFile(localBase, path.join(newFile, firstLet, item), err => {
-          console.log('done', err)
-        })
-      } else {
-        fs.unlinkSync(localBase)
-      }
+      let firstLet = item[0]
+      fs.mkdirSync(path.join(newFile, firstLet), { recursive: true })
+      copyFile(localBase, path.join(newFile, firstLet, item), () => {
+        console.log(`copy file: ${item}`)
+      })
     } else {
-      readDir(localBase);
+      readDir(localBase)
     }
   })
   if(argv._[0] === 'delete') {
-    fs.rmdirSync(base)
+    rimraf(base, () => {
+      console.log(`delete folder: ${base}`)
+    })
   }
 }
 
@@ -50,22 +48,8 @@ function copyFile(source, target, cb) {
   }
 }
 
-if(argv._[0] === 'copy' && argv.base !== undefined && argv.dir !== undefined) {
+if(argv.base !== undefined && argv.dir !== undefined && (argv._[0] === undefined || argv._[0] === 'delete')) {
   readDir(argv.base, argv.dir)
-} else if(argv._[0] === 'delete' && argv.base !== undefined) {
-  const rl = readLine.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  })
-  rl.question('Are you sure you want to delete the file: ' + argv.base + ' ? Y||N: ', ans => {
-    if(ans === 'Y' || ans === 'y') {
-      readDir(argv.base)
-      console.log('File deleted')
-      rl.close()
-    } else {
-      rl.close()
-    }
-  } )
 } else {
   console.log('Incorrect comand')
 }
