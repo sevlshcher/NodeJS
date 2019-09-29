@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/sevlshcher/NodeJS#readme",
   "dependencies": {
-    "eslint-config-standard": "^14.1.0"
+    "dotenv": "^8.1.0",
+    "eslint-config-standard": "^14.1.0",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "prettier-eslint": "^9.0.0"
